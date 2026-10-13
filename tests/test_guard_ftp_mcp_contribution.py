@@ -22,6 +22,7 @@ CATALOG_ID = "command.mcp-ftp"
 
 
 def artifact(tool="delete-directory", package="mcp-server-ftp@1.2.3"):
+    """Build a Codex tool-call artifact for an npx-launched FTP MCP package."""
     identity = build_mcp_server_identity(config_path="", command="npx", args=("-y", package), transport="stdio")
     return build_tool_call_artifact(
         harness="codex",
@@ -35,6 +36,7 @@ def artifact(tool="delete-directory", package="mcp-server-ftp@1.2.3"):
 
 
 def enabled_store():
+    """Create a test authority store with the FTP profile locally enabled."""
     return _AuthorityStore((_layer(ControlLayerKind.LOCAL_ADMIN, CATALOG_ID, ControlState.ENABLED),))
 
 
